@@ -18,7 +18,7 @@ Active/
 # ==========================================
 # Pygame Specific & Game Builds
 # ==========================================
-# PyInstaller builds (if you package your game as an .exe/.app)
+# PyInstaller builds
 build/
 dist/
 *.manifest
