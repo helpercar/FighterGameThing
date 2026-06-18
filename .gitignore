@@ -1,0 +1,47 @@
+# ==========================================
+# Python Core & Bytecode (Crucial)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ==========================================
+# Virtual Environments (Never commit these!)
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+Active/
+
+# ==========================================
+# Pygame Specific & Game Builds
+# ==========================================
+# PyInstaller builds (if you package your game as an .exe/.app)
+build/
+dist/
+*.manifest
+*.spec
+
+# Pygame/SDL temporary log files
+*.log
+
+# Crash dumps or logs if the game engine crashes
+crash_report*
+
+# ==========================================
+# Visual Studio Code Settings
+# ==========================================
+# Ignore local user workspace settings, but allow sharing project tasks/launch configs
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.history/
+
+# ==========================================
+# Operating System Files
+# ==========================================
+.DS_Store
+Thumbs.db
