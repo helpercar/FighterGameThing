@@ -6,6 +6,9 @@ import classes
 import random
 import sys
 
+scroll_index = 0
+lines = 4
+
 def refresh(max_hp1, max_hp2, selected_attack, fight1):
     # Refresh the screen using the updated health values and selected attacks
     screen.fill("teal")
@@ -19,10 +22,20 @@ def refresh(max_hp1, max_hp2, selected_attack, fight1):
     attacks = fight1.fighter1.get_attacks()
     
     font = pygame.font.Font(None, 36)
+    
+    if selected_attack > 3:
+        scroll_index = selected_attack - 3
+    else:
+        scroll_index = 0
+
+    pygame.draw.rect(screen, "gray", (35, 30, 180, 204))
+    pygame.draw.rect(screen, "white", (40, 35, 170, 194))
 
     for i, attack in enumerate(attacks):
-        text = font.render(attack, True, "white" if i == selected_attack else "black")
-        screen.blit(text, (50, 50 + i * 40))
+        if i < scroll_index or i > scroll_index + 3: # Range of [scroll_index, scroll_index + 3] for 4 items
+            continue
+        text = font.render(attack, True, "cyan" if i == selected_attack else "black")
+        screen.blit(text, (50, 50 + (i - scroll_index) * 40))
 
     pygame.display.flip()
 

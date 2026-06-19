@@ -46,8 +46,8 @@ class Fightable:
 class Slime(Fightable):
     def __init__(self, health, attack, defense, speed, name, level):
         super().__init__(health, attack, defense, speed, name, level)
-        self.attacks = ["Hop", "Splash", "Slime Scales", "Sharp Slime", "Slime Slurp"]
-        self.buffs = [[0, "def"], [0, "att"], [0, "reg"]] # Order goes [slime_scale, slime_stab, slime_regen]
+        self.attacks = ["Hop", "Splash", "Slime Scales", "Sharp Slime", "Slime Slurp", "Slime Dance"]
+        self.buffs = [[0, "def"], [0, "att"], [0, "reg"], [0, "spe"]] # Order goes [slime_scale, slime_stab, slime_regen, slime_dance]
 
     def choice_attack(self, attack):
         match attack:
@@ -61,6 +61,8 @@ class Slime(Fightable):
                 self.slime_stab()
             case 4:
                 self.slime_slurp()
+            case 5:
+                self.slime_dance()
         
         # For the attacks that buff/do no damage
         return 0
@@ -93,6 +95,10 @@ class Slime(Fightable):
     def slime_slurp(self):
         self.regen = True
         self.buffs[2][0] += 3
+    
+    def slime_dance(self):
+        self.speed *= 1.25
+        self.buffs[3][0]
 
     def toggle_buffs(self, index):
         match index:
@@ -102,6 +108,8 @@ class Slime(Fightable):
                 self.attack /= 1.5
             case 2:
                 self.regen = False
+            case 3:
+                self.speed /= 1.25
             case _:
                 return
         return
@@ -111,6 +119,9 @@ class Slime(Fightable):
             # Regenerate 10% Health
             self.health += (0.1 * self.maxHP)
             self.reduce_buff()
+
+
+    
 
 
 
